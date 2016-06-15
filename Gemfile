@@ -37,6 +37,9 @@ gem 'sprockets', '2.11.0'
 # Install will_paginate to add pagination to the app
 gem 'will_paginate'
 
+# Install simple form
+gem 'simple_form'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
