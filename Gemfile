@@ -40,6 +40,9 @@ gem 'will_paginate'
 # Install simple form
 gem 'simple_form'
 
+# Install devise gem
+gem 'devise', '>= 3.2.4'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
