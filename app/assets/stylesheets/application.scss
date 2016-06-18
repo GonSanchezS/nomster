@@ -37,6 +37,11 @@ h1 {
   font-family: 'dosismedium', serif;
 }
 
+h2 {
+  font-family: 'dosismedium', serif;
+  text-align: center
+}
+
 i {
     font-family: 'dosisregular', serif;
     color: #d5d5d5;
@@ -45,6 +50,11 @@ i {
 
 
 p {
+  font-family: 'dosisregular', serif;
+  font-size: 18px;
+}
+
+.form-label {
   font-family: 'dosisregular', serif;
   font-size: 18px;
 }
