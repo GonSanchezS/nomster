@@ -54,11 +54,14 @@ p {
   font-size: 18px;
 }
 
-.form-label {
-  font-family: 'dosisregular', serif;
-  font-size: 18px;
+.navbar-inverse .navbar-nav > li > a {
+  font-family: 'dosismedium', serif;
+  font-size: 16px;
 }
 
+.navbar-inverse .navbar-nav > li > a:hover {
+  color:#48C9C8;
+}
 
 .pagination {
   font-family: 'dosismedium', serif;
