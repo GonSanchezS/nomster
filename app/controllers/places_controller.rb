@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index
     #@places = Place.all #Display all entries in the Place model, and store it in @places.
@@ -39,13 +39,16 @@ class PlacesController < ApplicationController
     if @place.user != current_user
       return render text: 'You can only edit places you\'ve created', status: :forbidden
     end
-
   end
 
   def destroy
     @place = Place.find(params[:id])
     @place.destroy
     redirect_to root_path
+
+    if @place.user != current_user
+      return render text: 'You can only edit places you\'ve created', status: :forbidden
+    end
   end
 
 
