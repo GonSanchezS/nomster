@@ -11,8 +11,12 @@ class PlacesController < ApplicationController
   end
 
   def create
-    current_user.places.create(place_params)
-    redirect_to root_path
+    @place = current_user.places.create(place_params)
+    if @place.valid?
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def place_params
@@ -33,11 +37,16 @@ class PlacesController < ApplicationController
 
   def update
     @place = Place.find(params[:id])
-    @place.update_attributes(place_params)
-    redirect_to place_path(@place)
 
     if @place.user != current_user
       return render text: 'You can only edit places you\'ve created', status: :forbidden
+    end
+
+    @place.update_attributes(place_params)
+    if @place.valid?
+      redirect_to place_path(@place)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
