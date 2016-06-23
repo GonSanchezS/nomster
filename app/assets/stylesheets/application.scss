@@ -48,6 +48,15 @@ i {
     font-size: 15px;
 }
 
+a {
+  color: #000;
+}
+
+a:hover {
+  color: #48C9C8;
+  text-decoration: none;
+}
+
 
 p {
   font-family: 'dosisregular', serif;
@@ -61,6 +70,10 @@ p {
 
 .navbar-inverse .navbar-nav > li > a:hover {
   color:#48C9C8;
+}
+
+.navbar-toggle {
+  background-color: #000;
 }
 
 .pagination {
