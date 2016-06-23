@@ -49,6 +49,7 @@ i {
 }
 
 a {
+  font-family: 'dosisregular', serif;
   color: #000;
 }
 
@@ -63,6 +64,7 @@ p {
   font-size: 18px;
 }
 
+
 .navbar-inverse .navbar-nav > li > a {
   font-family: 'dosismedium', serif;
   font-size: 16px;
@@ -72,8 +74,16 @@ p {
   color:#48C9C8;
 }
 
+
 .navbar-toggle {
   background-color: #000;
+}
+
+.user-email {
+    font-family: 'dosisregular', serif;
+    color: #d5d5d5;
+    font-size: 12px;
+
 }
 
 .pagination {
@@ -105,6 +115,50 @@ p {
     color: black; }
     .pagination a:hover, .pagination a:focus {
       color: #48C9C8; }
+
+.glyphicon-heart {
+  color: #FA2D2D;
+}
+
+.email {
+  font-family: 'dosisregular', serif;
+  font-size: 15px;
+}
+
+.password {
+  font-family: 'dosisregular', serif;
+  font-size: 15px;
+}
+
+.comment_message {
+  font-family: 'dosisregular', serif;
+  font-size: 15px;
+}
+
+.comment_rating {
+  font-family: 'dosisregular', serif;
+  font-size: 15px;
+}
+
+.place_name {
+  font-family: 'dosisregular', serif;
+  font-size: 15px;
+}
+
+.place_address {
+  font-family: 'dosisregular', serif;
+  font-size: 15px;
+}
+
+.place_description {
+  font-family: 'dosisregular', serif;
+  font-size: 15px;
+}
+
+.btn {
+    font-family: 'dosismedium', serif;
+    font-size: 16px;
+}
 
 
 
