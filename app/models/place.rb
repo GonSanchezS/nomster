@@ -1,7 +1,7 @@
 class Place < ActiveRecord::Base
   belongs_to :user
   has_many :comments
-  
+
   geocoded_by :address
   after_validation :geocode
 
@@ -9,3 +9,5 @@ class Place < ActiveRecord::Base
   validates :name, length: { minimum: 3, 
     too_short: "Name should have more than %{count} characters"}
 end
+
+
