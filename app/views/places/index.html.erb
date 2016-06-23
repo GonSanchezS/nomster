@@ -9,6 +9,22 @@
     <i><%= place.address %></i><br /><br />
     <p><%= place.description %></p>
     
+    <% if place.comments.present? %>
+    <div> 
+      <blockquote>
+        <% if place.comments.present? && place.comments.last.humanized_rating.present? %>
+          <b><%= place.comments.last.humanized_rating %></b>-
+        <% end %>
+
+        <% if place.comments.present? %>
+          <%= place.comments.last.message %>
+          <% if place.comments.last.message %>
+          <small><%= place.comments.last.user.email %></small>
+          <% end %>
+        <% end %>  
+      </blockquote>
+    </div>
+    <% end %>
   </div>
 
 <% end %>
