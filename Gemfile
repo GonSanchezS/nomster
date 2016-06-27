@@ -52,6 +52,9 @@ gem 'figaro', '>= 1.0.0'
 # Install CarrierWabe
 gem 'carrierwave'
 
+# Install Fog
+gem 'fog'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
