@@ -5,3 +5,4 @@ require File.expand_path('../application', __FILE__)
 Nomster::Application.initialize!
 
 require 'carrierwave/orm/activerecord'
+
