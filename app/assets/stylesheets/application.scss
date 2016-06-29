@@ -93,6 +93,10 @@ body {
 }
 
 
+.navbar.navbar-inverse {
+  margin-bottom: 0px;
+}
+
 .navbar-inverse .navbar-nav > li > a {
   font-family: 'dosismedium', serif;
   font-size: 16px;
@@ -218,5 +222,21 @@ blockquote p {
   clear:both;
 }
 
+.carousel-inner {
+  margin-bottom: 30px;
+}
 
+.carousel-caption {
+  font-family: 'dosisregular', serif;
+  font-size: 30px;
+   background-color: rgba(0,0,0,0.5);
+   width: 100%;
+   position: absolute;
+   left: 0;
+}
+
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width: 100%;
+}
 
