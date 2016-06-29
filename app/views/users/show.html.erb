@@ -7,13 +7,28 @@
       <br />
       <h5 class="text-center">Member since <%= @user.created_at.strftime("%B %d, %Y") %></h5>
       <br />
-      <div class="text-center">
+
+      
+  <div class="clear"></div>
+    <br />
+  <h2>My comments</h2>
+  <br />
+  <div class="text-center">
       <h4><i class="glyphicon glyphicon-comment black"></i> <%= @user.comments.count %> total comments   </h4>
       <h4><i class="glyphicon glyphicon-star yellow"></i> <%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h4>
       </div>
-      
-  <div class="clear"></div>
 
+    <% @user.comments.each do |comment| %>
+    <div> 
+      <blockquote>
+      <% if comment.humanized_rating.present? %>
+        <b><%= comment.humanized_rating %></b> -
+      <% end %>
+      <%= comment.message %>
+      <small><%= link_to comment.place.name, place_path(comment.place) %></small>
+      </blockquote>
+    </div>
+    <% end %>
   </div>
 
 
