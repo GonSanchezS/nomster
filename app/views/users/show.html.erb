@@ -3,32 +3,69 @@
     <%= image_tag 'user1.png', width: "100px" %>
   </div>
     
-      <h1 class="text-center"><%= @user.email %></h1>
-      <br />
-      <h5 class="text-center">Member since <%= @user.created_at.strftime("%B %d, %Y") %></h5>
-      <br />
+  <h1 class="text-center"><%= @user.email %></h1>
+    <br />
+  <h5 class="text-center">Member since <%= @user.created_at.strftime("%B %d, %Y") %></h5>
+    <br />
 
-      
   <div class="clear"></div>
     <br />
-  <h2>My comments</h2>
-  <br />
   <div class="text-center">
-      <h4><i class="glyphicon glyphicon-comment black"></i> <%= @user.comments.count %> total comments   </h4>
-      <h4><i class="glyphicon glyphicon-star yellow"></i> <%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h4>
-      </div>
+  <h2>My comments</h2>
+    <br />
+    <h4><i class="glyphicon glyphicon-comment black"></i> <%= @user.comments.count %> total comments   </h4>
+    <h4><i class="glyphicon glyphicon-star yellow"></i> <%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h4>
+  </div>
 
-    <% @user.comments.each do |comment| %>
+  <% @user.comments.each do |comment| %>
     <div> 
       <blockquote>
-      <% if comment.humanized_rating.present? %>
-        <b><%= comment.humanized_rating %></b> -
-      <% end %>
-      <%= comment.message %>
-      <small><%= link_to comment.place.name, place_path(comment.place) %></small>
+        <% if comment.humanized_rating.present? %>
+          <b><%= comment.humanized_rating %></b> -
+        <% end %>
+        <%= comment.message %>
+        <small><%= link_to comment.place.name, place_path(comment.place) %></small>
+      </blockquote>
+    </div>
+  <% end %>
+
+  <div class="clear"></div>
+    <br />
+    <div class="text-center">
+    <h2>My places</h2>
+    <br />
+    <h4 class="text-center"><i class="glyphicon glyphicon-cutlery black"></i> <%= @user.places.count %> total places   </h4>
+    </div>
+    <br />
+    <% @user.places.each do |place| %>
+        <div class="booyah-box col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2">
+          <% if place.user == current_user %>
+            <small class="user-email pull-right"><i class="glyphicon glyphicon-heart"></i></small>
+          <% end %>
+
+    <h1><%= link_to place.name, place_path(place) %></h1>
+    <i><%= place.address %></i><br /><br />
+    <p><%= place.description %></p>
+    
+    <% if place.comments.present? %>
+    <div> 
+      <blockquote>
+        <% if place.comments.present? && place.comments.last.humanized_rating.present? %>
+          <b><%= place.comments.last.humanized_rating %></b> -
+        <% end %>
+
+        <% if place.comments.present? %>
+          <%= place.comments.last.message %>
+          <% if place.comments.last.message %>
+          <small><%= place.comments.last.user.email %></small>
+          <% end %>
+        <% end %>  
       </blockquote>
     </div>
     <% end %>
+  </div>
+    <% end %>  
+
   </div>
 
 
