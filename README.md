@@ -1,28 +1,24 @@
-== README
+# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Nomster is a Yelp clone, developed as practice for The Firehose Project. Flixter is hosted on Heroku, and can be accessed by clicking [here](http://flixter-gonsanchezs.heroku.com/). 
 
-Things you may want to cover:
+A few things to consider:
+* Flixter runs on Ruby 2.0.0, and Rails 4.0.4
+* Database is postgresql
 
-* Ruby version
+### Installation
 
-* System dependencies
+Deploying Nomster is super easy :rocket:
 
-* Configuration
+1 - Clone the repo:
+```git clone https://github.com/GonSanchezS/nomster.git```
 
-* Database creation
+2 - Install it: 
+```bundle install```
 
-* Database initialization
+3 - Create the database:
+```rake db:create```
 
-* How to run the test suite
+### Thanks! :heart_eyes:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Thanks for checking it out! If you have some feedback, you can always find me at [@gonsanchezs](https://www.twitter.com/gonsanchezs).
