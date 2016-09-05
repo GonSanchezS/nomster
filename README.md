@@ -8,7 +8,7 @@ A few things to consider:
 
 ### Installation
 
-Deploying Nomster is super easy :rocket:
+Setting up Nomster locally is super easy :rocket:
 
 1 - Clone the repo:
 ```git clone https://github.com/GonSanchezS/nomster.git```
@@ -18,6 +18,11 @@ Deploying Nomster is super easy :rocket:
 
 3 - Create the database:
 ```rake db:create```
+
+4 - Run the migration:
+```rake db:migrate```
+
+Depending on your environment and setup configuration you  may need to change ```config/database.yml```.
 
 ### Thanks! :heart_eyes:
 
