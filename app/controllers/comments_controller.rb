@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!
-  
+  before_action :authenticate_user!, only: [:create]
+
+  def index
+    render json: Comment.all
+  end
+
   def create
     @place = Place.find(params[:place_id])
     @place.comments.create(comment_params.merge(user: current_user))
