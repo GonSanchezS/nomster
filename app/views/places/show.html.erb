@@ -109,9 +109,6 @@
 
 -->
 
-<%= link_to 'This is a link', place_comments_path(@place) %>
-
-
 <!-- Comment Modal -->
 <div class="modal fade" id="myCommentModal" tabindex="-1" role="dialog" aria-labelledby="myCommentModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -153,13 +150,37 @@
 </div>
 
 </div>
-
-
-
+</div>
 
 
 <script>
   $(function () {
+
+
+    // The commentHtml method takes in a JavaScript representation
+    // of the task and produces an HTML representation using
+    // <li> tags
+
+    function commentHtml(comment) {
+      var liElement = '<div><blockquote>' + comment.message +
+      '<small>' + comment.rating +
+      '</small></blockquote></div>';
+      return liElement
+    }     
+
+    // This GET request lists all comment in the database
+
+    $.get($('.comment-list').data('comment-url')).done( function(data) {
+      var htmlString = '';
+
+      $.each(data, function (index, comment) {
+        htmlString += commentHtml(comment);
+      });
+      var commentsDiv = $('.comment-list');
+      commentsDiv.html(htmlString);
+    });
+
+    // This takes the value in the form, and submits a POST request
 
     $('#comment-form').submit(function(event) {
       event.preventDefault();
@@ -171,20 +192,12 @@
         }
       };
       $.post($('.comment-list').data('comment-url'), payload).success(function(data){
-        console.log('Successful HTTP request!');
+        var htmlString = commentHtml(data)
+        var commentList = $('.comment-list');
+        commentList.append(htmlString);
       });
     });
 
-    $.get($('.comment-list').data('comment-url')).done( function(data) {
-      var htmlString = '';
-
-      $.each(data, function (index, comment) {
-        var liElement = '<div><blockquote>' + comment.message + '<small>' + comment.rating + '</small></blockquote></div>';
-        htmlString += liElement;
-      });
-      var commentsDiv = $('.comment-list');
-      commentsDiv.html(htmlString);
-    });
   });
 </script>
 
