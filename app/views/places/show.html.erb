@@ -90,7 +90,7 @@
 </button>
 
 <h1>Comments</h1>
-<div class="comment-list">
+<div class="comment-list" data-comment-url=<%= place_comments_path(@place)%>>
 </div>
 
 <!--
@@ -109,6 +109,8 @@
 
 -->
 
+<%= link_to 'This is a link', place_comments_path(@place) %>
+
 <!-- Comment Modal -->
 <div class="modal fade" id="myCommentModal" tabindex="-1" role="dialog" aria-labelledby="myCommentModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -119,7 +121,7 @@
       </div>
       <div class="modal-body">
 
-      <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+      <%= simple_form_for @comment, url: place_comments_path(@place), id: 'new-form' do |f| %>
         <%= f.input :message %>
         <br />
         <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
@@ -137,13 +139,20 @@
 
 </div>
 
+
+
 <script>
   $(function () {
-    $.get('comments').done( function(data) {
+    //console.log("This is the URL:" + .data('comment-url'))
+    //$('#new-form').submit( function(event) {
+    //  event.preventDefault();
+    // console.log('Intercepted!');
+    //});
+    $.get($('.comment-list').data('comment-url')).done( function(data) {
       var htmlString = '';
 
       $.each(data, function (index, comment) {
-        var liElement = '<div><blockquote>' + comment.message + '<small>' + comment.user_id.email + '</small></blockquote></div>';
+        var liElement = '<div><blockquote>' + comment.message + '<small>' + comment.rating + '</small></blockquote></div>';
         htmlString += liElement;
       });
       var commentsDiv = $('.comment-list');
