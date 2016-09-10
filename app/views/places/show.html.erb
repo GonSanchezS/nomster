@@ -111,6 +111,7 @@
 
 <%= link_to 'This is a link', place_comments_path(@place) %>
 
+
 <!-- Comment Modal -->
 <div class="modal fade" id="myCommentModal" tabindex="-1" role="dialog" aria-labelledby="myCommentModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -121,17 +122,31 @@
       </div>
       <div class="modal-body">
 
-      <%= simple_form_for @comment, url: place_comments_path(@place), id: 'new-form' do |f| %>
-        <%= f.input :message %>
+      <form id="comment-form">
+        <input type="text" class="new-comment" />
+        <select class="place-rating">
+          <option value="1_stars">1 Stars</option>
+          <option value="2_stars">2 Stars</option>
+          <option value="3_stars">3 Stars</option>
+          <option value="4_stars">4 Stars</option>
+          <option value="5_stars">5 Stars</option>
+        </select>
+      </form>
+
+<!--
+      <%= simple_form_for @comment, url: place_comments_path(@place), html: {id: 'comment-form1'} do |f| %>
+        <%= f.input :message, html: { class: 'new-comment1', type: 'text' } %>
         <br />
-        <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
+        <%= f.input :rating, as: :select, collection: Comment::RATINGS, html: { class: 'place-rating1' } %>
         <br />
-      </div>  
+      </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
         </div>
+
+      -->
       <% end %>
     </div>
   </div>
@@ -141,13 +156,25 @@
 
 
 
+
+
 <script>
   $(function () {
-    //console.log("This is the URL:" + .data('comment-url'))
-    //$('#new-form').submit( function(event) {
-    //  event.preventDefault();
-    // console.log('Intercepted!');
-    //});
+
+    $('#comment-form').submit(function(event) {
+      event.preventDefault();
+      var commentBox = $('.new-comment');
+      var placeRating = $('.place-rating');
+      var payload = {
+        comment: {
+          message: commentBox.val(), rating: placeRating.val()
+        }
+      };
+      $.post($('.comment-list').data('comment-url'), payload).success(function(data){
+        console.log('Successful HTTP request!');
+      });
+    });
+
     $.get($('.comment-list').data('comment-url')).done( function(data) {
       var htmlString = '';
 
