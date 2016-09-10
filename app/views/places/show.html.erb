@@ -21,7 +21,7 @@
   </script>
 
   <script async defer
-          src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3jPH-nfOBjQmNfitMWJOEko-rDHZtPn0&callback=initMap"></script>
           
   <div id="map"></div> 
   <br />
@@ -90,6 +90,11 @@
 </button>
 
 <h1>Comments</h1>
+<div class="comment-list">
+</div>
+
+<!--
+
 <% @place.comments.each do |comment| %>
 <div> 
   <blockquote>
@@ -101,6 +106,8 @@
   </blockquote>
 </div>
 <% end %>
+
+-->
 
 <!-- Comment Modal -->
 <div class="modal fade" id="myCommentModal" tabindex="-1" role="dialog" aria-labelledby="myCommentModalLabel" aria-hidden="true">
@@ -128,10 +135,21 @@
   </div>
 </div>
 
-
 </div>
 
+<script>
+  $(function () {
+    $.get('comments').done( function(data) {
+      var htmlString = '';
 
-
+      $.each(data, function (index, comment) {
+        var liElement = '<div><blockquote>' + comment.message + '<small>' + comment.user_id.email + '</small></blockquote></div>';
+        htmlString += liElement;
+      });
+      var commentsDiv = $('.comment-list');
+      commentsDiv.html(htmlString);
+    });
+  });
+</script>
 
 

@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def index
-    render json: Comment.all
+    @place = Place.find(params[:place_id])
+    render json: @place.comments
   end
 
   def create
