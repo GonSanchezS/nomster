@@ -1,2 +1,9 @@
 $('#places').append('<%= j render(@places) %>');
-$('.pagination').replaceWith('<%= will_paginate(@places) %>');
+<% if @places.next_page %>
+  $('.pagination').replaceWith('<%= will_paginate(@places) %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>
+
+
+<% sleep 1 %>
