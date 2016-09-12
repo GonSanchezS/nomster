@@ -1,0 +1,28 @@
+
+
+  <div class="booyah-box col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2">
+    <% if place.user == current_user %>
+      <small class="user-email pull-right"><i class="glyphicon glyphicon-heart"></i></small>
+    <% end %>
+
+    <h1><%= link_to place.name, place_path(place) %></h1>
+    <i><%= place.address %></i><br /><br />
+    <p><%= place.description %></p>
+    
+    <% if place.comments.present? %>
+    <div> 
+      <blockquote>
+        <% if place.comments.present? && place.comments.last.humanized_rating.present? %>
+          <b><%= place.comments.last.humanized_rating %></b> -
+        <% end %>
+
+        <% if place.comments.present? %>
+          <%= place.comments.last.message %>
+          <% if place.comments.last.message %>
+          <small><%= place.comments.last.user.email %></small>
+          <% end %>
+        <% end %>  
+      </blockquote>
+    </div>
+    <% end %>
+  </div>

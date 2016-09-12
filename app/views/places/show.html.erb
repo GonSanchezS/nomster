@@ -156,6 +156,8 @@
 <script>
   $(function () {
 
+    
+
 
     // The commentHtml method takes in a JavaScript representation
     // of the task and produces an HTML representation using
@@ -179,6 +181,31 @@
       var commentsDiv = $('.comment-list');
       commentsDiv.html(htmlString);
     });
+
+    // Performs a get request on /comments/ every 5s. Loop through each element in the array, and 
+    // check if it's present in the DOM (with a dom selector). 
+    // If is present, do nothing. Else pass the element through commentHtml and append to existing.
+    // If it's already rendered, do nothing. 
+
+    // function getComments() {
+    //  var intervalId = setInterval(function() {
+    //    $.get($('.comment-list').data('comment-url')).done( function(data) {
+    //     var htmlString = '';
+    //
+    //      $.each(data, function (index, comment) {
+    //        htmlString += commentHtml(comment);
+    //      });
+    //      var commentsDiv = $('.comment-list');
+    //      commentsDiv.html(htmlString);}, 
+    //      10000);
+    //};
+
+    //   if (condition) {
+    //  block of code to be executed if the condition is true
+    //} else { 
+    //    block of code to be executed if the condition is false
+    // }
+    
 
     // This takes the value in the form, and submits a POST request
 
